@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>index</title>
+    </head>
+    <body>
+        <p>XD</p>
+        <p id ='usersLink'></p>
+        
+    <script type='text/javascript'>
+        users = {{users|tojson}};
+        var usersL = Object.values(users);//将对象转数组
+        for(var i=0;i<usersL.length;i++){
+           usersLink.innerHTML+=("<a href= /target?user="+usersL[i]+">"+usersL[i]+"</a>"+"<br>");//拼接字符串形成用户链接
+        }
+    </script>
+    </body>
+        
+</html>

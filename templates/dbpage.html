@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>db management page</title>
+        <link type="text/css" rel='stylesheet' href='http://127.0.0.1:8080/static/css/db.css'/>
+    </head>
+    
+    <body>
+        <h2>Database Management Page</h2>
+        <p id = 'res'></p>
+      
+        <form action="/addUser" method="post">
+            <td>创造新用户:</td>
+            <td><input type="text" name="username" placeholder="username"/></td>
+            <td><input type="text" name="sex" placeholder="sex"/></td>
+            <td><input type="text" name="mail" placeholder="mail"/></td>
+            <td><input type="text" name ='introduction' placeholder='introduction'/></td>
+            <td><input type="text" name='img' placeholder='img'/></td>
+            <td><input type="submit" value="提交"></td>
+        </form>
+        <!--创造新用户表单-->
+        <form action="/updateUser" method="post">
+            <td>更新用户:</td>&emsp;
+            <td><input type="text" name="username" placeholder="username"/></td>
+            <td><input type='text' name="sex" placeholder='sex'/></td>
+            <td><input type="text" name="mail" placeholder="mail"/></td>
+            <td><input type='text' name='introduction' placeholder='introduction'/></td>
+            <td><input type='text' name='img' placeholder='img'/></td>
+            <td><input type="submit" value="提交"></td>
+        </form>
+        <!--创造更新用户表单-->
+        <form action="/delUser" method="post">
+            <td>删除用户:</td>&emsp;
+            <td><input type="text" name="username" placeholder="username"/></td>
+            <td><input type="submit" value="提交"/></td>
+        </form>
+        <!--创造删除用户表单-->
+        <br>
+        <br>
+        <form action="/dropUser" method="post">
+            <input type = "submit" value = "删除用户表"/>
+        </form>
+        <!--删除用户表表单-->
+        
+        <script type="text/javascript">
+            window.onload = function print(){
+                data = {{result|tojson}};
+                data = data.replace(/,/g,':');
+                //替换逗号
+                var add = "";
+                for(var i=0,mark=0;i<data.length-2;i++){
+                    if(data.slice(i,i+1)=="*"){
+                        add = data.slice(mark,i+3);//获取要插入的单挑用户信息
+                        add = add.replace('*','');
+                        mark=i+3;
+                        var div = document.getElementById("res");//获取元素节点
+                        div.innerHTML+=("<p>"+add+"</p>");//添加用户信息
+                    }
+                }
+            }
+        </script><!--这里必须加"text/javascript",不然不运行-->
+    </body>
+</html>
+
+
+
+
+

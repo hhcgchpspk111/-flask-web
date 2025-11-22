@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>gc love ღღღ</title>
+        <link type='text/css' rel='stylesheet' href = 'http://47.120.61.18:8080/static/css/target.css'/>
+    </head>
+    <body>
+    <center id = 'profile'></center>
+    
+    <script type='text/javascript'>
+        username={{username|tojson}};
+        sex={{sex|tojson}};
+        mail={{mail|tojson}};
+        introduction={{introduction|tojson}};
+        img={{img|tojson}};
+        //(太懒了,直接一个一个读取出来)
+        var user = window.location.search;//获取url参数
+        var user = user.slice(6,user.length);//截取用户名
+        profile.innerHTML+=("<h1>"+"name:"+username+"</h1>");//添加用户名
+        profile.innerHTML+=("<h2>"+"sex:"+sex+"</h2>");//添加性别
+        profile.innerHTML+=("<h2>"+"mail:"+mail+"</h2>");//添加邮箱
+        profile.innerHTML+=("<h3>"+"introduction:"+introduction+"</h3>");//添加介绍
+        profile.innerHTML+=("<img src=http://127.0.0.1:8080/"+img+" alt="+username+">");//添加图片
+    </script>
+    </body>
+</html>
